@@ -4,27 +4,18 @@ import reflex as rx
 
 from rxconfig import config
 
+from . import ui
 
 class State(rx.State):
     """The app state."""
 
     ...
 
-def navbar(*args, **kwargs) -> rx.Component:
-    return rx.heading('navbar')
-
-
-def base_layout(*args, **kwargs) -> rx.Component:
-    
-    return rx.container(
-        navbar()
-        *args, **kwargs
-    )
 
 
 def about_us() -> rx.Component:
     # About us  Page (Index)
-    return base_layout(
+    return ui.base_layout(
         rx.color_mode.button(position="top-left"),
         rx.vstack(
             rx.heading("Welcome to Rexlex About us ", size = '9'),
@@ -38,7 +29,7 @@ def about_us() -> rx.Component:
 
 def home_page() -> rx.Component:
     # Welcome Page (Index)
-    return base_layout(
+    return ui.base_layout(
         rx.color_mode.button(position="top-left"),
         rx.vstack(
             rx.text(
