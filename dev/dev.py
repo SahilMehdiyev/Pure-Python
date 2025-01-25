@@ -7,8 +7,15 @@ from rxconfig import config
 
 class State(rx.State):
     """The app state."""
+    label = 'This is my label'
+    orginal_label = 'This is my label'
 
-    ...
+    def change_label(self):
+        if self.label == 'Cool label.':
+            self.label = self.orginal_label
+        else:
+            self.label = 'Cool label.'
+
 
 
 def index() -> rx.Component:
@@ -16,14 +23,16 @@ def index() -> rx.Component:
     return rx.container(
         rx.color_mode.button(position="top-left"),
         rx.vstack(
-            rx.heading("Welcome to Reflex!", size="7"),
+            rx.heading(State.label," Welcome to Reflex!", size="7"),
             rx.text(
                 "Get started by editing ",
                 rx.code(f"{config.app_name}/{config.app_name}.py"),
+                on_click=State.change_label,
                 size="5",
             ),
+            # rx.button('Do something!', on_click=State.change_label),
             rx.link(
-                rx.button("Check out our docs!"),
+                rx.button("Check out our docs!",),
                 href="https://reflex.dev/docs/getting-started/introduction/",
                 is_external=True,
             ),
