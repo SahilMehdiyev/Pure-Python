@@ -10,9 +10,21 @@ class State(rx.State):
 
     ...
 
+def navbar(*args, **kwargs) -> rx.Component:
+    return rx.heading('navbar')
+
+
+def base_layout(*args, **kwargs) -> rx.Component:
+    
+    return rx.container(
+        navbar()
+        *args, **kwargs
+    )
+
+
 def about_us() -> rx.Component:
     # About us  Page (Index)
-    return rx.container(
+    return base_layout(
         rx.color_mode.button(position="top-left"),
         rx.vstack(
             rx.heading("Welcome to Rexlex About us ", size = '9'),
@@ -24,13 +36,16 @@ def about_us() -> rx.Component:
     )
 
 
-def index() -> rx.Component:
+def home_page() -> rx.Component:
     # Welcome Page (Index)
-    return rx.container(
+    return base_layout(
         rx.color_mode.button(position="top-left"),
         rx.vstack(
             rx.text(
                 rx.heading("Welcome to Reflex GPT! ", size = '9'),
+                rx.text(
+                    'Get started by editing something like'
+                ),
                 rx.code(f"{config.app_name}/{config.app_name}.py"),
                 size="5",
             ),
@@ -48,4 +63,5 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index)
+app.add_page(home_page, route='/')
+app.add_page(about_us, route='/about')
