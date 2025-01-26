@@ -29,6 +29,8 @@ def base_navbar() -> rx.Component:
                     navbar_link("Home", navigation.routes.HOME_ROUTE),
                     navbar_link("About", navigation.routes.ABOUT_US_ROUTE),
                     navbar_link("Chat", navigation.routes.CHAT_ROUTE),
+                    navbar_link('Signup',navigation.routes.SIGNUP),
+                    navbar_link('Login',navigation.routes.LOGIN),
                     justify="end",
                     spacing="5",
                 ),

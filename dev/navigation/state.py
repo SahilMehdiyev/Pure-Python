@@ -12,3 +12,9 @@ class NavState(rx.State):
     
     def to_chat(self):
         return rx.redirect(routes.CHAT_ROUTE)
+    
+    def to_signup(self):
+        return rx.redirect(routes.SIGNUP)
+
+    def to_login(self):
+        return rx.redirect(routes.LOGIN)
