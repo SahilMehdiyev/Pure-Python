@@ -14,9 +14,16 @@ def chat_form() -> rx.Component:
                 required=True,
                 width ='100%',
             ),
-            rx.button('Submit',type='submit')
+            rx.hstack(
+                rx.button('Submit',type='submit'),
+                rx.cond(
+                    ChatState.did_submit,
+                    rx.text('Submitted'),
+                    rx.text('Did not submit')
+                )
+            )
         ),
 
         on_submit = ChatState.handle_submit,
-        reset_on_submit = False
+        reset_on_submit = True
     )
