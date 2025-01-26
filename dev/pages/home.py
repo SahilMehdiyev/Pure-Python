@@ -6,6 +6,8 @@ from rxconfig import config
 
 from dev import ui
 
+# from dev import navigation
+
 
 def home_page() -> rx.Component:
     # Welcome Page (Index)
@@ -25,6 +27,7 @@ def home_page() -> rx.Component:
                 href="https://reflex.dev/docs/getting-started/introduction/",
                 is_external=True,
             ),
+            # rx.box("Go to about", on_click=navigation.state.NavState.to_about_us),
             spacing="5",
             justify="center",
             min_height="85vh",
