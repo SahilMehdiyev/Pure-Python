@@ -1,5 +1,7 @@
 import reflex as rx
 
+from dev import navigation
+
 def navbar_link(text: str, url: str) -> rx.Component:
     return rx.link(
         rx.text(text, size="4", weight="medium"), href=url
@@ -23,29 +25,9 @@ def base_navbar() -> rx.Component:
                     align_items="center",
                 ),
                 rx.hstack(
-                    navbar_link("Home", "/#"),
-                    rx.menu.root(
-                        rx.menu.trigger(
-                            rx.button(
-                                rx.text(
-                                    "Services",
-                                    size="4",
-                                    weight="medium",
-                                ),
-                                rx.icon("chevron-down"),
-                                weight="medium",
-                                variant="ghost",
-                                size="3",
-                            ),
-                        ),
-                        rx.menu.content(
-                            rx.menu.item("Service 1"),
-                            rx.menu.item("Service 2"),
-                            rx.menu.item("Service 3"),
-                        ),
-                    ),
-                    navbar_link("Pricing", "/#"),
-                    navbar_link("Contact", "/#"),
+                    
+                    navbar_link("Home", navigation.routes.HOME_ROUTE),
+                    navbar_link("About", navigation.routes.ABOUT_US_ROUTE),
                     justify="end",
                     spacing="5",
                 ),
@@ -72,16 +54,8 @@ def base_navbar() -> rx.Component:
                         rx.icon("menu", size=30)
                     ),
                     rx.menu.content(
-                        rx.menu.item("Home"),
-                        rx.menu.sub(
-                            rx.menu.sub_trigger("Services"),
-                            rx.menu.sub_content(
-                                rx.menu.item("Service 1"),
-                                rx.menu.item("Service 2"),
-                                rx.menu.item("Service 3"),
-                            ),
-                        ),
-                        rx.menu.item("About"),
+                        rx.menu.item("Home",),
+                        rx.menu.item("About",),
                         rx.menu.item("Pricing"),
                         rx.menu.item("Contact"),
                     ),
